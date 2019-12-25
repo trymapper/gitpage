@@ -3,12 +3,12 @@ function main() {
     let stop_btn = document.getElementById("stopButton");
     let reset_btn = document.getElementById("resetButton");
     let lap_btn = document.getElementById("lapButton");
-    console.log("asf")
 
     let sec = 0;
     let min = 0;
     let hour = 0;
     let flag = 0;
+    let timer_act = false;
 
     function to_sec(hour, min, sec){
         return sec + min*60 + hour*60*60;
@@ -56,8 +56,10 @@ function main() {
     }
 
     function start_timer(){
-        console.log(flag)
-        if(flag == 0) test_timer = setInterval(perSecProcess, 1000);
+        if(flag == 0){
+            test_timer = setInterval(perSecProcess, 1000);
+            timer_act = true
+        } 
     }
 
     let lap_time = document.getElementById("lap_time")
@@ -94,7 +96,6 @@ function main() {
         }
         lap_time.innerHTML = stockList
         cnt += 1
-        console.log(sec)
     }
 
     start_btn.addEventListener("click", function () {
@@ -103,12 +104,12 @@ function main() {
     });
 
     stop_btn.addEventListener("click", function(){
-        clearInterval(test_timer)
+        if(timer_act) clearInterval(test_timer)
         flag = 0
     });
 
     reset_btn.addEventListener("click", function(){
-        clearInterval(test_timer)
+        if(timer_act) clearInterval(test_timer)
         flag = 0
         sec = 0;
         min = 0;
@@ -123,16 +124,36 @@ function main() {
     })
 
 
-    let down_start_btn = document.getElementById("down_startButton")
-    let down_stop_btn = document.getElementById("down_stopButton")
-    let down_reset_btn = document.getElementById("down_resetButton")
+    let down_start_btn = document.getElementById("down_startButton");
+    let down_stop_btn = document.getElementById("down_stopButton");
+    let down_reset_btn = document.getElementById("down_resetButton");
+    let down_config_btn = document.getElementById("down_configButton");
+    
+    $("#down-config-popup-ok").on("click", function () {
+        let h = $("#output1").text();
+        let m = $("#output2").text();
+        let s = $("#output3").text();
+
+        down_sec = s;
+        down_min = m;
+        down_hour = h;
+
+        updateDown(`${( '00' + down_hour ).slice( -2 )}:${( '00' + down_min ).slice( -2 )}:${( '00' + down_sec ).slice( -2 )}`)
+        // do something
+        togglePopupVisibility();
+    });
 
     let down_sec = 0;
-    let down_min = 20;
+    let down_min = 0;
     let down_hour = 0;
     let down_flag = 0;
 
     function down_perSecProcess() {
+        if (down_hour==0 && down_min==0 && down_sec==0){
+            clearInterval(down_test_timer)
+            down_flag = 0
+            return
+        }
         down_sec--;
         if (down_sec < 0){
             down_min--;
@@ -142,6 +163,7 @@ function main() {
             down_hour--;
             down_min = 59;
         }
+        
         updateDown(`${( '00' + down_hour ).slice( -2 )}:${( '00' + down_min ).slice( -2 )}:${( '00' + down_sec ).slice( -2 )}`);
     }
 
@@ -151,7 +173,6 @@ function main() {
     }
 
     function down_start_timer(){
-        console.log(flag)
         if(down_flag == 0) down_test_timer = setInterval(down_perSecProcess, 1000);
     }
 
@@ -172,92 +193,15 @@ function main() {
         down_min = 0;
         updateDown("00:00:00")
     })
-    
-    fuck = function() {
-        var document   = document,
-        selector    = '[data-rangeslider]',
-        element    = selector;
-        function valueOutput(element) {
-        var value = element.value,
-            output = element.parentNode.getElementsByTagName('output')[0];
-            output.innerHTML = value;
-        }
-        for (var i = element.length - 1; i >= 0; i--) {
-        valueOutput(element[i]);
-        };
-        document.on('change', 'input[type="range"]', function(e) {
-        valueOutput(e.target);
-        });
-        element.rangeslider({
-        polyfill: false,
-        onInit: function() {},
-        // onSlide: function(position, value) {
-        //   console.log('onSlide');
-        //   console.log('position: ' + position, 'value: ' + value);
-        // },
-        onSlideEnd: function(position, value) {
-            console.log('onSlideEnd');
-            console.log('position: ' + position, 'value: ' + value);
-        }
-        });
-        return value
-    }
 
-    fuck()
-
-
-
-
-
-
-    let hoge = document.getElementById("output2")
-    console.log(hoge.value)
-    console.log(fuck)
-
-    var head = document.getElementsByTagName('head')
-    var script = document.createElement('script')
-    //ここで任意のjQueryを読み込ませる
-    script.setAttribute('src', 'https://code.jquery.com/jquery-1.12.4.min.js')
-    script.setAttribute('type', 'text/javascript')
-    script.addEventListener('load', function() {
-
-        // ここにjQueryの記述をする
-        $(fuck = function() {
-            var $document   = $(document),
-            selector    = '[data-rangeslider]',
-            $element    = $(selector);
-            function valueOutput(element) {
-            var value = element.value,
-                output = element.parentNode.getElementsByTagName('output')[0];
-                output.innerHTML = value;
-            }
-            for (var i = $element.length - 1; i >= 0; i--) {
-            valueOutput($element[i]);
-            };
-            $document.on('change', 'input[type="range"]', function(e) {
-            valueOutput(e.target);
-            });
-            $element.rangeslider({
-            polyfill: false,
-            onInit: function() {},
-            // onSlide: function(position, value) {
-            //   console.log('onSlide');
-            //   console.log('position: ' + position, 'value: ' + value);
-            // },
-            onSlideEnd: function(position, value) {
-                console.log('onSlideEnd');
-                console.log('position: ' + position, 'value: ' + value);
-            }
-            });
-            return value
-        });
-    })
-
+    down_config_btn.addEventListener("click", function () {
+        togglePopupVisibility();
+    });
    
 }
 
-function hoge() {
-    console.log("hoge");
+function togglePopupVisibility() {
+    $("#down-config-popup").toggleClass("hidden");
 }
 
 window.addEventListener('load', main)
