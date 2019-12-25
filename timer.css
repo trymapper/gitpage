@@ -1,0 +1,312 @@
+#timer {
+    font-size: 30px;
+}
+#up_top{
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 10px 5px 10px;
+    text-decoration: none;
+    color: #FFA000;
+    background: #fff1da;
+    border-bottom: solid 4px #FFA000;
+    /* border-radius: 15px 15px 0 0; */
+    transition: .4s;
+    border-radius: 5px;/*角の丸み*/
+}
+#down_top{
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 10px 5px 10px;
+    text-decoration: none;
+    color: #228b22;
+    background: #ecfbec;
+    border-bottom: solid 4px #228b22;
+    /* border-radius: 15px 15px 0 0; */
+    transition: .4s;
+    border-radius: 5px;/*角の丸み*/
+
+}
+
+#lap_top{
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 10px 5px 10px;
+    text-decoration: none;
+    color: #000000;
+    background: #f5f5f5;
+    border-bottom: solid 4px #000000;
+    /* border-radius: 15px 15px 0 0; */
+    transition: .4s;
+    border-radius: 5px;/*角の丸み*/
+
+}
+  
+
+.container{
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #f0f8ff
+}
+
+.header{
+    display: flex;
+    background: pink;
+    /* align-items: center; */
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+        /* padding: 0.5em 1em; */
+        margin: 3px 3px;
+        font-weight: bold;
+        /* color: burlywood;文字色 */
+        /* background: #FFF; */
+        border: solid 3px #ff4500;/*線*/
+        border-radius: 20px;/*角の丸み*/
+}
+
+.title{
+    font-size: 50px;
+    font-weight: bold;
+    color: #8b0000;
+    /* position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 10px 5px 10px;
+    text-decoration: none;
+    
+    background: #fff0f5;
+    border-bottom: solid 4px #8b0000;
+    /* border-radius: 15px 15px 0 0; */
+    transition: .4s;
+    border-radius: 5px;角の丸み 
+}
+
+.main{
+    display: flex;
+}
+
+.count_up{
+    flex: 1;
+    background: burlywood;
+    text-align: center;
+    
+    /* padding: 0.5em 1em; */
+    margin: 3px 3px;
+    font-weight: bold;
+    /* color: burlywood;文字色 */
+    /* background: #FFF; */
+    border: solid 3px #8b4513;/*線*/
+    border-radius: 20px;/*角の丸み*/
+}
+.up_num{
+    font-size: 50px;
+}
+.button{
+
+}
+
+
+
+.count_down{
+    flex: 1;
+    background: #00ff7f;
+    text-align: center;
+    
+        /* padding: 0.5em 1em; */
+    margin: 3px 3px;
+    font-weight: bold;
+    /* color: burlywood;文字色 */
+    /* background: #FFF; */
+    border: solid 3px #006400;/*線*/
+    border-radius: 20px;/*角の丸み*/
+}
+.down_num{
+    font-size: 50px;
+}
+
+.lap{
+    text-align: center;
+    background: #d3d3d3;
+
+        /* padding: 0.5em 1em; */
+    margin: 3px 3px;
+    font-weight: bold;
+    /* color: burlywood;文字色 */
+    /* background: #FFF; */
+    border: solid 3px #696969;/*線*/
+    border-radius: 20px;/*角の丸み*/
+    min-height: 58vh;
+}
+
+
+.btn-start {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #d27d00;/*線色*/
+  }
+  
+.btn-start:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+.btn-stop {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #d27d00;/*線色*/
+  }
+  
+.btn-stop:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+.btn-reset {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #d27d00;/*線色*/
+  }
+  
+.btn-reset:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.btn-stop:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+.btn-lap {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #d27d00;/*線色*/
+  }
+  
+.btn-lap:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+
+
+.down-btn-start {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #228b22;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #3cb371;/*線色*/
+  }
+  
+.down-btn-start:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+.down-btn-stop {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #228b22;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #3cb371;/*線色*/
+  }
+  
+.down-btn-stop:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+.down-btn-reset {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #228b22;/*色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #3cb371;/*線色*/
+  }
+  
+.down-btn-reset:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.down-btn-stop:active {
+    /*押したとき*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+/* Element */
+/* #ID */
+/* .Class */
+
+
+ol {
+position: relative;
+list-style-type: none!important;/*ポチ消す*/
+/* padding: 0.0em 0.0em 0.0em 0.1em; */
+/* margin-bottom: 1px; */
+/* line-height: 1.5; */
+background: #dbebf8;
+vertical-align: middle;
+color: #505050;
+
+/* border-radius: 15px 0px 0px 15px;左側の角丸く */
+}
+
+/* ol:before{ 
+display:inline-block; 
+vertical-align: middle;
+/*以下白丸つくる*/
+/* content:'';
+width:1em;
+height: 1em;
+background: #fff;
+border-radius: 50%;
+margin-right: 8px;
+} */ 

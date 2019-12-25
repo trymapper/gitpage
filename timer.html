@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>timer for 議論の時間</title>
+    <script src="timer.js"></script>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="timer.css">
+    <link rel="stylesheet" href="rangeslider.css">
+
+<!-- ポップアップに使う -->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+
+    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                議論の時間だよん
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="count_up">
+                <div id = "up_top">Count Up</div>
+                <div class="up_num" id="up_num">00:00:00</div>
+                <div class="button">
+                    <a href="#" class="btn-start" id="startButton">START</a>
+                    <a href="#" class="btn-stop" id="stopButton">STOP</a>
+                    <a href="#" class="btn-reset" id="resetButton">RESET</a>
+                    <a href="#" class="btn-lap" id="lapButton">LAP</a>
+
+                </div>
+               
+            </div>
+
+            <div class="count_down">
+                <div id = "down_top">Count Down</div>
+                <div class="down_num" id="down_num">00:00:00</div>
+                <!-- <input type="number" value="1" min="1" max="10" step="1">
+                <input type="number" value="1" min="1" max="10" step="1">
+                <input type="number" value="1" min="1" max="10" step="1"> -->
+                <div class="button">
+                    <a href="#" class="down-btn-start" id="down_startButton">START</a>
+                    <a href="#" class="down-btn-stop" id="down_stopButton">STOP</a>
+                    <a href="#" class="down-btn-reset" id="down_resetButton">RESET</a>
+                    <a href="#" class="down-btn-reset" id="js-show-popup">CONFIG</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="lap">
+            <div id = lap_top>Lap Time</div>
+            <div>経過-----間隔-----日時</div>
+            <div class="lap_time" id="lap_time">
+            </div>
+        </div>
+
+        <div class="popup" id="js-popup">
+          <div class="popup-inner">
+            <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
+            <a href="#l"><iframe src="inner_popup.html" frameborder="0" width="600" height="400"></iframe></a>
+          </div>
+          <div class="black-background" id="js-black-bg"></div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
