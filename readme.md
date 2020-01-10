@@ -1,0 +1,1 @@
+[タイマーのURLだよん](https://trymapper.github.io/timer_for_GironNoJikan/timer)
