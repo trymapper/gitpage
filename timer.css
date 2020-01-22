@@ -333,3 +333,9 @@ background: #fff;
 border-radius: 50%;
 margin-right: 8px;
 } */ 
+
+.hidden-link {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
