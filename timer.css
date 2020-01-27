@@ -109,10 +109,13 @@
     border-radius: 20px;/*角の丸み*/
 }
 .up_num{
-    font-size: 50px;
+    font-size: 80px;
 }
-.button{
 
+
+
+.button{
+    font-size: 20px;
 }
 
 
@@ -131,7 +134,7 @@
     border-radius: 20px;/*角の丸み*/
 }
 .down_num{
-    font-size: 50px;
+    font-size: 80px;
 }
 
 .lap{
@@ -330,3 +333,9 @@ background: #fff;
 border-radius: 50%;
 margin-right: 8px;
 } */ 
+
+.hidden-link {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
