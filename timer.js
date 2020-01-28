@@ -62,7 +62,7 @@ function main() {
 
     function start_timer(){
         if(flag == 0){
-            test_timer = setInterval(perSecProcess, 10);
+            test_timer = setInterval(perSecProcess, 1000);
             timer_act = true
         } 
         playSoundStart()
