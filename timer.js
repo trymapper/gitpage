@@ -223,32 +223,32 @@ function togglePopupVisibility() {
 function playSoundStart()
 {
     adioElem = new Audio()
-    adioElem.src = "sounds/start.mp3"
+    adioElem.src = "sounds/start.wav"
     adioElem.play()
 }
 function playSoundStop()
 {
-    adioElem = new Audio("sounds/stop.mp3")
+    adioElem = new Audio("sounds/stop.wav")
     adioElem.play()
 }
 function playSoundReset()
 {
     adioElem = new Audio()
-    adioElem.src = "sounds/arere.mp3"
+    adioElem.src = "sounds/arere.wav"
     adioElem.play()
 }
 function playSoundTimeUp()
 {
     adioElem = new Audio()
-    adioElem.src = "sounds/time_up.mp3"
+    adioElem.src = "sounds/time_up.wav"
     adioElem.play()
 }
 function playSoundKeika(time)
 {
     if (time <= 100){
-        adioElem = new Audio("sounds/" + time.toString() + ".mp3")
-        adioElem2 = new Audio("sounds/min.mp3")
-        adioElem3 = new Audio("sounds/keika.mp3")
+        adioElem = new Audio("sounds/" + time.toString() + ".wav")
+        adioElem2 = new Audio("sounds/min.wav")
+        adioElem3 = new Audio("sounds/keika.wav")
         adioElem.play()
         adioElem.addEventListener("ended", function(e){
             adioElem2.play()
