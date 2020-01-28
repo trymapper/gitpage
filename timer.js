@@ -1,4 +1,6 @@
 function main() {
+
+    // カウントアップについて
     let start_btn = document.getElementById("startButton");
     let stop_btn = document.getElementById("stopButton");
     let reset_btn = document.getElementById("resetButton");
@@ -47,6 +49,9 @@ function main() {
             hour++;
             min = 0;
         }
+        if (to_sec(hour, min, sec) % 1200 == 0){
+            playSoundKeika(parseInt(to_sec(hour, min, sec) / 60, 10))
+        }
         updateDiv(`${( '00' + hour ).slice( -2 )}:${( '00' + min ).slice( -2 )}:${( '00' + sec ).slice( -2 )}`);
     }
 
@@ -57,19 +62,19 @@ function main() {
 
     function start_timer(){
         if(flag == 0){
-            test_timer = setInterval(perSecProcess, 1000);
+            test_timer = setInterval(perSecProcess, 10);
             timer_act = true
         } 
+        playSoundStart()
     }
 
+    // ラップ機能について
     let lap_time = document.getElementById("lap_time")
     let buf = []
     let buf_sec = []
     let cnt = 0
     let hour_min_sec = new Array(3)
     
-   
-
     function input_lap(){
         buf_sec[cnt] = to_sec(hour, min, sec)
         var now = new window.Date();
@@ -100,11 +105,13 @@ function main() {
 
     start_btn.addEventListener("click", function () {
         start_timer()
+        playSoundStart()
         flag = 1
     });
 
     stop_btn.addEventListener("click", function(){
         if(timer_act) clearInterval(test_timer)
+        playSoundStop()
         flag = 0
     });
 
@@ -117,6 +124,7 @@ function main() {
         cnt = 0
         lap_time.innerHTML = ''
         updateDiv("00:00:00")
+        playSoundReset()
     })
 
     lap_btn.addEventListener("click", function(){
@@ -144,14 +152,17 @@ function main() {
     });
 
     let down_sec = 0;
-    let down_min = 0;
+    let down_min = 20;
     let down_hour = 0;
     let down_flag = 0;
+    updateDown(`${( '00' + down_hour ).slice( -2 )}:${( '00' + down_min ).slice( -2 )}:${( '00' + down_sec ).slice( -2 )}`);
+
 
     function down_perSecProcess() {
         if (down_hour==0 && down_min==0 && down_sec==0){
             clearInterval(down_test_timer)
             down_flag = 0
+            playSoundTimeUp()
             return
         }
         down_sec--;
@@ -174,6 +185,7 @@ function main() {
 
     function down_start_timer(){
         if(down_flag == 0) down_test_timer = setInterval(down_perSecProcess, 1000);
+        playSoundStart()
     }
 
     down_start_btn.addEventListener("click", function () {
@@ -183,6 +195,7 @@ function main() {
 
     down_stop_btn.addEventListener("click", function(){
         clearInterval(down_test_timer)
+        playSoundStop()
         down_flag = 0
     });
 
@@ -190,8 +203,10 @@ function main() {
         clearInterval(down_test_timer)
         down_flag = 0
         down_sec = 0;
-        down_min = 0;
-        updateDown("00:00:00")
+        down_min = 20;
+        down_hour = 0
+        updateDown(`${( '00' + down_hour ).slice( -2 )}:${( '00' + down_min ).slice( -2 )}:${( '00' + down_sec ).slice( -2 )}`);
+        playSoundReset()
     })
 
     down_config_btn.addEventListener("click", function () {
@@ -203,5 +218,46 @@ function main() {
 function togglePopupVisibility() {
     $("#down-config-popup").toggleClass("hidden");
 }
+
+// 音の設定
+function playSoundStart()
+{
+    adioElem = new Audio()
+    adioElem.src = "sounds/start.mp3"
+    adioElem.play()
+}
+function playSoundStop()
+{
+    adioElem = new Audio("sounds/stop.mp3")
+    adioElem.play()
+}
+function playSoundReset()
+{
+    adioElem = new Audio()
+    adioElem.src = "sounds/arere.mp3"
+    adioElem.play()
+}
+function playSoundTimeUp()
+{
+    adioElem = new Audio()
+    adioElem.src = "sounds/time_up.mp3"
+    adioElem.play()
+}
+function playSoundKeika(time)
+{
+    if (time <= 100){
+        adioElem = new Audio("sounds/" + time.toString() + ".mp3")
+        adioElem2 = new Audio("sounds/min.mp3")
+        adioElem3 = new Audio("sounds/keika.mp3")
+        adioElem.play()
+        adioElem.addEventListener("ended", function(e){
+            adioElem2.play()
+        })
+        adioElem2.addEventListener("ended", function(e){
+            adioElem3.play()
+        })
+    }
+    }
+    
 
 window.addEventListener('load', main)
